@@ -8,6 +8,8 @@ import java.sql.ResultSet;
 
 import javax.swing.*;
 
+import com.formdev.flatlaf.FlatDarculaLaf;
+
 public class LoginForm extends JFrame {
 
     final private Font mainFont = new Font("Segoe print", Font.BOLD,18); // the font that ll be used by the diff-t components
@@ -55,8 +57,7 @@ public class LoginForm extends JFrame {
 
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    // // TODO Auto-generated method stub
-                    // throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
+                    
                     String email = tfEmail.getText();
                     String password = String.valueOf(pfPassword.getPassword());
                     User user = getAuthenticatedUser(email,password);
@@ -122,7 +123,7 @@ public class LoginForm extends JFrame {
             User user = null;
             final String DB_URL = "jdbc:mysql://localhost/mystore";
             final String USERNAME = "root";
-            final String PASSWORD = "......";
+            final String PASSWORD = "as56df";
 
 
             try{
@@ -157,6 +158,12 @@ public class LoginForm extends JFrame {
         }
 
         public static void main(String[] args) {
+
+            try {
+                UIManager.setLookAndFeel( new FlatDarculaLaf() );
+            } catch( Exception ex ) {
+                System.err.println( "Failed to initialize LaF" );
+            }
             LoginForm loginForm = new LoginForm();
             loginForm.initialize();
         }
